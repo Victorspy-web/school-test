@@ -3,7 +3,7 @@
 	{% include "partials/messages.html" %}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
 		<div class="container-fluid p-4">
-			<a class="navbar-brand text-upper" href="{% url 'students:list_students' %}">SCHOOL MANAGEMENT</a>
+			<a class="navbar-brand text-upper" href="{% url 'students:list_students' %}"><span class="text-info">SCHOOL</span> <span class="text-danger">MANAGE</span><span class="text-dark">MENT</span></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 				aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
 						<a class="nav-link" href="{% url 'students:create_student' %}">Add Student</a>
 					</li>
 
-					
+
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
@@ -27,8 +27,13 @@
 							{{request.user.username|upper}}
 						</a>
 						<ul class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a></li>
+							<li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
+							</li>
 							<li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="https://github.com/Victorspy-web/school-test.git" target="_blank">Source Code</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -48,7 +53,7 @@
 	{% include "partials/messages.html" %}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
 		<div class="container-fluid p-4">
-			<a class="navbar-brand text-upper" href="{% url 'students:list_students' %}">SCHOOL MANAGEMENT</a>
+			<a class="navbar-brand text-upper" href="{% url 'students:list_students' %}"><span class="text-info">SCHOOL</span> <span class="text-danger">MANAGE</span><span class="text-dark">MENT</span></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 				aria-label="Toggle navigation">
