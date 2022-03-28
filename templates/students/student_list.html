@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}All student{% endblock title %}
+
+{% block content %}
+<div class="row my-5">
+	<div class="col-md-12">
+		<table class="table bg-white">
+			<thead class="bg-success">
+				<tr class="text-white">
+					<th>#</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Telephone</th>
+					<th>Program</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for student in students %}
+				<tr>
+					<td>
+						{{student.first_name}}
+						{{student.last_name}}
+					</td>
+					<td>{{student.email}}</td>
+					<td>{{student.first_name}}</td>
+					<td>{{student.telephone}}</td>
+					<td>{{student.program}}</td>
+					<td>
+						<a class="btn btn-success btn-sm" href="{% url 'students:student_detail' student.id %}">More Details</a>
+					</td>
+				</tr>
+				{% empty %}
+					<td colspan="5">
+						<h3  class="text-center my-4">No student added yet</h3>
+					</td>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+
+{% endblock content %}

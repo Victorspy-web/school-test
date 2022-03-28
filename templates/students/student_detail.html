@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Student Detail Page{% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-5">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header bg-success text-white h4 text-center">
+					Student Detail Page
+				</div>
+				<div class="card-body my-2">
+					<div class="row">
+						<div class="col-md-8">
+							<span class="h4">{{student.first_name|title}}'s Information</span> 
+							<a class="btn btn-success btn-sm float-right mb-2 mx-2 my-2"
+								href="{% url 'students:update_student' student.id %}">Edit Student
+							</a>
+
+							<a class="btn btn-success btn-sm float-right mb-2 mx-2 my-2"
+								href="{% url 'students:delete_student' student.id %}">Delete Student
+							</a>
+
+							<hr>
+							<table class="table bg-white table-borderless">
+								<tbody>
+								
+									<tr>
+										<th scope="row" class="text-uppercase">First Name</th>
+										<td>{{student.first_name|title}}</td>
+									</tr>
+									<tr>
+										<th scope="row" class="text-uppercase">Last Name</th>
+										<td>{{student.last_name|title}}</td>
+									</tr>
+									<tr>
+										<th scope="row" class="text-uppercase">Other Names</th>
+										<td>{{student.other_names|title}}</td>
+									</tr>
+									<tr>
+										<th scope="row" class="text-uppercase">Age</th>
+										<td>{{student.age}}</td>
+									</tr>
+									<tr>
+										<th scope="row" class="text-uppercase">Email</th>
+										<td>{{student.email}}</td>
+									</tr>
+									<tr>
+										<th scope="row" class="text-uppercase">Telephone</th>
+										<td>{{student.telephone}}</td>
+									</tr>
+									<tr>
+										<th scope="row" class="text-uppercase">Address</th>
+										<td>{{student.program}}</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+						<div class="col-md-4">
+							{% if student.picture %}
+							<img class="img-fluid profile-img" src="{{ student.picture.url }}" alt="My profile image" draggable="false">
+							{% else %}
+							<img class="img-fluid profile-img" src="{% static 'images/avatar.jpeg' %}" alt="{{student.first_name}}'s profile image" draggable="false">
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock content %}

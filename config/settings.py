@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     
     # Third party apps
     'admin_honeypot',
+    'django_cleanup',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -58,10 +60,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,6 +130,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URLS = '/media/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -133,3 +143,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom user conf
 AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT = 'students:list_students'

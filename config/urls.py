@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     # correct admin path
     path('secret/', admin.site.urls),
-    path('students', include('students.urls', namespace='students'))
+    path('', include('students.urls', namespace='students')),
+    path('users/', include('users.urls'))
 ]
 
 if settings.DEBUG:
