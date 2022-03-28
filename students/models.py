@@ -9,7 +9,7 @@ class Student(models.Model):
         ('diploma', 'Diploma'),
         ('degree', 'Degree'),
     )
-    picture = models.ImageField(upload_to="images/students", blank=True)
+    picture = models.ImageField(upload_to="school/images/students", blank=True)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     other_names = models.CharField(max_length=150, blank=True)

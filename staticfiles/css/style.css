@@ -1,0 +1,8 @@
+* {
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+*::selection{
+	background-color: yellow;
+	color: black;
+}
