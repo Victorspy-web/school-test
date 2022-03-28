@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o2%79lcy%z2ejy!x#n^2sh1+v^39t^s-!=5z&@d%w0x!7eusba'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,10 +86,25 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DB_NAME = config('DB_NAME')
+DB_USER = config('DB_USER')
+DB_PASSWORD = config('DB_PASSWORD')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME, #
+        'USER': DB_USER, #
+        'PASSWORD': DB_PASSWORD, #
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -144,4 +161,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # custom user conf
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT = 'students:list_students'
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'students:list_students'
+
+LOGOUT_REDIRECT_URL = 'login'
+
+# cloudinary
+c_name = config('CLOUDINARY_CLOUD_NAME')
+c_secret = config('CLOUDINARY_API_SECRET')
+c_api_key = config('CLOUDINARY_API_KEY')
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': c_name,
+    'API_KEY': c_api_key,
+    'API_SECRET': c_secret,
+
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr', 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+}
