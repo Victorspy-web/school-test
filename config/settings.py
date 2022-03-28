@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-o2%79lcy%z2ejy!x#n^2sh1+v^39t^s-!=5z&@d%w0x!7eusba'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -175,9 +175,9 @@ LOGIN_REDIRECT_URL = 'students:list_students'
 LOGOUT_REDIRECT_URL = 'login'
 
 # cloudinary
-c_name = config('CLOUDINARY_CLOUD_NAME')
-c_secret = config('CLOUDINARY_API_SECRET')
-c_api_key = config('CLOUDINARY_API_KEY')
+c_name = 'veddickson'
+c_secret = '6qiKYLnjp5ND2LFZJ-QsyiL-Tcg'
+c_api_key = '783253721195247'
 
 
 CLOUDINARY_STORAGE = {
@@ -191,3 +191,4 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+
