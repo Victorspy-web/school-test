@@ -2,6 +2,7 @@
 {% block title %}All student{% endblock title %}
 
 {% block content %}
+
 <div class="row my-5">
 	<div class="col-md-12">
 		<table class="table bg-white">
@@ -18,12 +19,12 @@
 			<tbody>
 				{% for student in students %}
 				<tr>
+					<td>{{forloop.counter}}</td>
 					<td>
 						{{student.first_name}}
 						{{student.last_name}}
 					</td>
 					<td>{{student.email}}</td>
-					<td>{{student.first_name}}</td>
 					<td>{{student.telephone}}</td>
 					<td>{{student.program}}</td>
 					<td>
@@ -31,9 +32,9 @@
 					</td>
 				</tr>
 				{% empty %}
-					<td colspan="5">
-						<h3  class="text-center my-4">No student added yet</h3>
-					</td>
+				<td colspan="5">
+					<h3  class="text-center my-4">No student found</h3>
+				</td>
 				{% endfor %}
 			</tbody>
 		</table>

@@ -6,7 +6,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 
 
-
 from django.urls import reverse_lazy
 
 from .models import Student
@@ -42,7 +41,7 @@ class StudentDeleteView(StudentMixin, DeleteView):
     template_name = 'students/student_delete.html'
     context_object_name = 'student'
     success_message = 'Student deleted successfully'
-    
+
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(StudentDeleteView, self).delete(request, *args, **kwargs)
@@ -51,3 +50,17 @@ class StudentDeleteView(StudentMixin, DeleteView):
 class StudentDetailView(StudentEditMixin, DetailView):
     template_name = 'students/student_detail.html'
     context_object_name = 'student'
+
+
+class SearchStudents(StudentMixin, ListView):
+    template_name = 'students/student_list.html'
+    context_object_name = 'students'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            students = self.model.objects.filter(first_name__icontains=query) \
+                or self.model.objects.filter(email__icontains=query)
+        else:
+            students = self.model.objects.all()
+        return students

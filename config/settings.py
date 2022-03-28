@@ -38,6 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # django allauth
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    
     # my apps
     'users.apps.UsersConfig',
     'students.apps.StudentsConfig',
@@ -165,11 +172,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # custom user conf
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = 'students:list_students'
-
-LOGOUT_REDIRECT_URL = 'login'
 
 # cloudinary
 c_name = 'veddickson'
@@ -189,3 +192,14 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 
+
+# Allauth django
+SITE_ID = 1
+
+LOGIN_URL = '/accounts/login/'
+
+LOGIN_REDIRECT_URL = 'students:list_students'
+
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False

@@ -11,4 +11,6 @@ urlpatterns = [
 	path('student/<pk>/edit/', StudentUpdateView.as_view(), name='update_student'),
 	path('student/<pk>/detail/', StudentDetailView.as_view(), name='student_detail'),
 	path('student/<pk>/delete/', StudentDeleteView.as_view(), name='delete_student'),
+
+	path('search/', SearchStudents.as_view(), name='search')
 ]

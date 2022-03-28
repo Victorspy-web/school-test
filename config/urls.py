@@ -24,6 +24,10 @@ urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     # correct admin path
     path('secret/', admin.site.urls),
+    
+    # django allauth url
+    path('accounts/', include('allauth.urls')),
+
     path('', include('students.urls', namespace='students')),
     path('users/', include('users.urls'))
 ]
