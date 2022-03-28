@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o2%79lcy%z2ejy!x#n^2sh1+v^39t^s-!=5z&@d%w0x!7eusba'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'school.codeconline.com', 'www.school.codeconline.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -99,6 +100,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# use this for production
 
 # DB_NAME = config('DB_NAME')
 # DB_USER = config('DB_USER')
@@ -174,23 +177,24 @@ AUTH_USER_MODEL = 'users.User'
 
 
 
-# cloudinary
-c_name = 'veddickson'
-c_secret = '6qiKYLnjp5ND2LFZJ-QsyiL-Tcg'
-c_api_key = '783253721195247'
+# cloudinary for production
+
+# c_name = config('')
+# c_secret = config('')
+# c_api_key = config('')
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': c_name,
-    'API_KEY': c_api_key,
-    'API_SECRET': c_secret,
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': c_name,
+#     'API_KEY': c_api_key,
+#     'API_SECRET': c_secret,
 
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr', 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-}
+#     'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr', 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+# }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 
 
 # Allauth django
@@ -201,5 +205,3 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = 'students:list_students'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
-
-ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
