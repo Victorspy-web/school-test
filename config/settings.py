@@ -205,3 +205,17 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = 'students:list_students'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# use this is you want to recieve email via terminal
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Django Email sending configuration
+email = config("MY_EMAIL_ADDRESS")
+password = config("MY_EMAIL_PASSWORD")
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # because am using gmail
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = email
+EMAIL_HOST_PASSWORD = password

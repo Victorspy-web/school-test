@@ -17,11 +17,15 @@
 						<div class="col-md-8">
 							<span class="h4">{{student.first_name|title}}'s Information</span> 
 							<a class="btn btn-success btn-sm float-right mb-2 mx-2 my-2"
-								href="{% url 'students:update_student' student.id %}">Edit Student
+								href="{% url 'students:update_student' student.id %}">Edit
 							</a>
 
 							<a class="btn btn-success btn-sm float-right mb-2 mx-2 my-2"
-								href="{% url 'students:delete_student' student.id %}">Delete Student
+								href="{% url 'students:delete_student' student.id %}">Delete
+							</a>
+
+							<a class="btn btn-success btn-sm float-right mb-2 mx-2 my-2"
+								href="{% url 'send_student_mail' student.id %}">Send Mail
 							</a>
 
 							<hr>
